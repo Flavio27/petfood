@@ -9,5 +9,5 @@ mongoose.set('debug', true);
 
 mongoose
   .connect(DATABASE_URL)
-  .then(() => console.log('DB is up '))
+  .then(() => console.log('DB is up'))
   .catch((err) => console.log(`Error in DB initialization! error: ${err}`));

@@ -10,7 +10,7 @@
     "test": "",
     "start": "nodemon src/index.js",
     "start-dev": "nodemon -r dotenv/config src/index.js",
-    "lint": "eslint"
+    "lint": "eslint ./"
   },
   "dependencies": {
     "axios": "^0.21.0",
