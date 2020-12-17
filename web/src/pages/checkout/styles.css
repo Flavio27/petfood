@@ -1,0 +1,7 @@
+.section-title{
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 7px;
+    margin: 20px 0;
+    display: inline-block;
+    
+}
