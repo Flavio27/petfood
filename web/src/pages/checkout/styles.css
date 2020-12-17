@@ -5,3 +5,8 @@
     display: inline-block;
     
 }
+
+.box-sidebar{
+    max-height: 500px;
+    overflow-y: auto;
+}

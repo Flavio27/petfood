@@ -20,7 +20,7 @@
     display: block;
 }
 
-..product-list button {
+.product-list button {
     position: absolute;
     right: 30px;
     padding: 1px 14px;
