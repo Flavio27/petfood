@@ -4,6 +4,8 @@
 
 .product-list .badge {
     margin-bottom: 0;
+    color: #fff;
+    background-color: var(--primary);
 }
 
 .product-list img {
