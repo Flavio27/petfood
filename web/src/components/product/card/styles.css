@@ -29,6 +29,11 @@
 	text-align: right;
 }
 .product button{
-display: inline;
-min-width: 20px;;
+	display: inline;
+	min-width: 20px;;
+}
+
+.product button.btn-secondary {
+	padding: 1px 14px;
+
 }

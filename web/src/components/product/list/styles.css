@@ -1,3 +1,8 @@
+:root {
+    --primary: 6,214,160;
+    --secondary: 250,100,61;
+}
+
 .product-list{
     margin-top: 10px;
 }
@@ -26,4 +31,9 @@
     padding: 1px 14px;
     font-size: 25px;
     margin-top: 20px;
+}
+
+.badge.badge-primary{
+    background: rgba(var(--primary), 0.1);
+    color: rgb(var(--primary));
 }

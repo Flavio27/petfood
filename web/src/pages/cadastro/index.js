@@ -5,7 +5,7 @@ import Header from '../../components/header';
 export default function Cadastro() {
   return (
     <div className="container-fluid h-100 bg-primary">
-      <Header whiteVersion />
+      <Header whiteVersion hideCart/>
       <div className="row">
         <div className="col-6 text-right my-auto">
           <img src={illustration} alt="iilustration" className="img-fluid" />

@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles.css';
 
+
 export default function Product() {
   return (
     <div className="col-12 product-list">
@@ -10,7 +11,7 @@ export default function Product() {
         </div>
         <div className="col-6">
           <h6>
-            <label className="badge badge-secondary">R$ 30,00</label>
+            <label className="badge badge-primary">R$ 30,00</label>
           </h6>
           <small>
             <b>Clique para visualizar o vídeo Ração Special Dog Premium Carne para Cães Adultos</b>
