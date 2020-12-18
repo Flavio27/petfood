@@ -1,5 +1,7 @@
 import React from 'react'
+import './styles.css'
 import Header from '../../components/header';
+import Product from '../../components/product/card'
 
 function PetShop() {
 	return (
@@ -8,14 +10,31 @@ function PetShop() {
 			<div className="container">
 				<div className="row">
 					<div className="col-2">
-					<img alt="petlove" 
-					src="https://www.petlove.com.br/static/uploads/banner_image/image/4304/logo-petlove-push.png"
-					className="img-fluid"
-					/>
-					<b>PetLove</b>
+						<img alt="petlove"
+							src="https://www.petlove.com.br/static/uploads/banner_image/image/4304/logo-petlove-push.png"
+							className="img-fluid petshop-img"
+						/>
+						<b>PetLove</b>
+						<div className="petshop-infos">
+							<span className="mdi mdi-star"></span>
+							<text>
+								<b>2,8</b>
+							</text>
+							<span className="mdi mdi-cash-usd-outline"></span>
+							<text>$$$</text>
+							<span className="mdi mdi-crosshairs-gps"></span>
+							<text>2.9 KM</text>
+						</div>
+						<label className="badge badge-primary">Frete Grátis</label>
 					</div>
 					<div className="col-10">
-
+						<h5>Produtos</h5>
+						<br />
+						<div className="row list-products">
+							{[1, 2, 3, 4, 5, 6, 7, 8, 9].map(p =>(
+								<Product />
+							))}
+						</div>
 					</div>
 				</div>
 			</div>
