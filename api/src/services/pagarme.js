@@ -8,7 +8,7 @@ const apiKey = process.env.PAGARME_API_KEY;
 module.exports = {
   createRecipient: async (name) => {
     try {
-      const response = api.post('recipients', {
+      const response = await api.post('/recipients', {
         api_key: apiKey,
         bank_account: {
           bank_code: '341',
