@@ -6,6 +6,6 @@ mongoose.set('useUnifiedTopology', true);
 mongoose.set('debug', true);
 
 mongoose
-  .connect(process.env.DATABASE_URL)
+  .connect('***REMOVED***')
   // eslint-disable-next-line no-console
   .catch((err) => console.error(`Error in DB initialization: ${err}`));
