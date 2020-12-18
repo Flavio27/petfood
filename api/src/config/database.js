@@ -7,5 +7,5 @@ mongoose.set('debug', true);
 
 mongoose
   .connect(process.env.DATABASE_URL)
-  .then(() => console.log('DB is up'))
-  .catch((err) => console.log(`Error in DB initialization! error: ${err}`));
+  // eslint-disable-next-line no-console
+  .catch((err) => console.error(`Error in DB initialization: ${err}`));

@@ -12,6 +12,4 @@ app.use(express.json());
 
 app.use('/', require('./routes/main.routes'));
 
-app.listen(app.get('port'), () => {
-  console.log('Server is up!');
-});
+app.listen(app.get('port'));

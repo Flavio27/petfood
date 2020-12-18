@@ -17,10 +17,12 @@ router.get('/petshops', async (req, res) => {
 router.get('/petshops/:id', async (req, res) => {
   try {
     const petshop = await Petshop.findById(req.params.id);
-    const products = await Product.findById({
+    const products = await Product.find({
+      // eslint-disable-next-line no-underscore-dangle
       petshop_id: petshop._id,
     }).populate('petshop_id', 'recipient_id');
 
+    // eslint-disable-next-line no-underscore-dangle
     res.json({ error: false, petshop: { ...petshop._doc, products } });
   } catch (err) {
     res.json({ error: true, message: err.message });
