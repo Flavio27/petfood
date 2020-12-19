@@ -1,0 +1,29 @@
+{
+  "name": "petfood-api",
+  "version": "1.0.0",
+  "description": "backend api for petfood project",
+  "main": "index.js",
+  "repository": "git@github.com:Flavio27/petfood.git",
+  "author": "Flavio Rocha <email@flaviorocha.com)",
+  "license": "MIT",
+  "scripts": {
+    "test": "",
+    "start": "node index.js",
+    "start-dev": "nodemon -r dotenv/config index.js",
+    "lint": "eslint ./"
+  },
+  "dependencies": {
+    "axios": "^0.21.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.8",
+    "morgan": "^1.10.0",
+    "vercel": "^21.0.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
