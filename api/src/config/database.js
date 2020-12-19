@@ -6,6 +6,6 @@ mongoose.set('useUnifiedTopology', true);
 mongoose.set('debug', true);
 
 mongoose
-  .connect('mongodb+srv://book-test:xikOq2p7QZcqLpYC@cluster0.glb7j.mongodb.net/petfood?retryWrites=true&w=majority')
+  .connect(process.env.DATABASE_URL)
   // eslint-disable-next-line no-console
   .catch((err) => console.error(`Error in DB initialization: ${err}`));
