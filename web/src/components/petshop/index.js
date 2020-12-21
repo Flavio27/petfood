@@ -16,7 +16,7 @@ const PetShop = ({ petshop }) => {
 
 	return (
 		<li
-			className="petshop d-inline-block"
+			className={`petshop d-inline-block ${petshopMapSelected === petshop._id ? 'active' : ''}`}
 			onClick={() => setSelectedPetshop()}
 		>
 			<div className="d-inline-block">
