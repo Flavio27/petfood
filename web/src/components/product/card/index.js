@@ -1,24 +1,37 @@
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleCartProduct } from '../../../store/modules/shop/actions'
 import React from 'react'
 import './styles.css'
 
-const Product = () => {
+const Product = ({ produto }) => {
+
+	const dispatch = useDispatch();
+	const { cart } = useSelector(state => state.shop)
+	const added = cart.findIndex((p) => p._id === produto._id) !== -1;
+
+
 	return (
 		<div className="product col-3">
-			<img src="https://a-static.mlcdn.com.br/618x463/racao-pedigree-equilibrio-natural-para-caes-adultos-de-racas-pequenas-1-kg/tanakaopetshop/4987989548/8573c3c4c05f7745db8e995f66e71138.jpg"
+			<span className="mdi mdi-star"></span> {produto.avaliacoes}
+			<img src={produto.capa}
 				className="img-fluid align-center"
 				alt="" />
 			<div className="row">
 				<div className="col-6">
 					<h4>
-						<label className="badge badge-primary">R$ 90,00</label>
+						<label className="badge badge-primary">R$ {produto.preco.toFixed(2)}</label>
 					</h4>
 				</div>
 				<div className="col-6 button-div">
-					<button className="btn btn-primary rounded-circle">+</button>
+					<button
+						onClick={() => dispatch(toggleCartProduct(produto))}
+						className={`btn btn-${added ? 'secondary' : 'primary'} rounded-circle`}>
+						{added ? '-' : '+'}
+					</button>
 				</div>
 			</div>
 			<small>
-				<b>Ração Pedigree Equilíbrio Natural para Cães Adultos de Raças Pequenas - 1 Kg</b>
+				<b>{produto.nome}</b>
 			</small>
 		</div>
 	)

@@ -9,7 +9,7 @@ export function requestPetShops() {
 }
 
 export function setPetshops(petshops) {
-  return { type: types.SET_PETSHOPS, petshops };
+	return { type: types.SET_PETSHOPS, petshops };
 }
 
 export function setShopMapSelected(petshop) {
@@ -21,9 +21,13 @@ export function setMapCenter(location) {
 }
 
 export function requestPetshop(id) {
-  return { type: types.REQUEST_PETSHOP, id }
+	return { type: types.REQUEST_PETSHOP, id }
 }
 
 export function setPetshop(petshop) {
-  return { type: types.SET_PETSHOP, petshop }
+	return { type: types.SET_PETSHOP, petshop }
+}
+
+export function toggleCartProduct(produto) {
+	return { type: types.TOGGLE_CART_PRODUCT, produto }
 }

@@ -10,20 +10,21 @@ const Petshop = ({ match }) => {
   const { petshop } = useSelector((state) => state.shop);
 
   useEffect(() => {
-    dispatch(requestPetshop(match.params.id));
+		dispatch(requestPetshop(match.params.id));
   }, []);
 
+	console.log(petshop.produtos)
 	return (
 		<div className="h-100">
 			<Header />
 			<div className="container">
 				<div className="row">
 					<div className="col-2">
-						<img alt="petlove"
-							src="https://www.petlove.com.br/static/uploads/banner_image/image/4304/logo-petlove-push.png"
+						<img alt={petshop.nome}
+							src={petshop.logo}
 							className="img-fluid petshop-img"
 						/>
-						<b>PetLove</b>
+						<b>{petshop.nome}</b>
 						<div className="petshop-infos">
 							<span className="mdi mdi-star"></span>
 							<text>
@@ -40,9 +41,9 @@ const Petshop = ({ match }) => {
 						<h5>Produtos</h5>
 						<br />
 						<div className="row list-products">
-							{[1, 2, 3, 4, 5, 6, 7, 8, 9].map(p => (
-								<Product />
-							))}
+						{petshop.produtos?.map((p) => (
+                <Product produto={p} />
+              ))}
 						</div>
 					</div>
 				</div>
