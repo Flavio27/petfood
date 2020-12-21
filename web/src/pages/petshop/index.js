@@ -1,9 +1,18 @@
-import React from 'react'
-import './styles.css'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { requestPetshop } from '../../store/modules/shop/actions';
 import Header from '../../components/header';
-import Product from '../../components/product/card'
+import Product from '../../components/product/card';
+import './styles.css';
 
-function PetShop() {
+const Petshop = ({ match }) => {
+  const dispatch = useDispatch();
+  const { petshop } = useSelector((state) => state.shop);
+
+  useEffect(() => {
+    dispatch(requestPetshop(match.params.id));
+  }, []);
+
 	return (
 		<div className="h-100">
 			<Header />
@@ -31,7 +40,7 @@ function PetShop() {
 						<h5>Produtos</h5>
 						<br />
 						<div className="row list-products">
-							{[1, 2, 3, 4, 5, 6, 7, 8, 9].map(p =>(
+							{[1, 2, 3, 4, 5, 6, 7, 8, 9].map(p => (
 								<Product />
 							))}
 						</div>
@@ -42,4 +51,4 @@ function PetShop() {
 	)
 }
 
-export default PetShop
+export default Petshop
