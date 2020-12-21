@@ -26,16 +26,16 @@ function shop(state = INITIAL_STATE, action) {
 		}
 
 		case types.SET_PETSHOP_MAP_SELECTED: {
-			return produce(state, (draft) => {
-				draft.petShopSelected = action.petshop;
-			});
-		}
+      return produce(state, (draft) => {
+        draft.petshopMapSelected = action.petshop;
+      });
+    }
 
-		case types.SET_MAP_CENTER: {
-			return produce(state, (draft) => {
-				draft.mapCenter = action.location;
-			});
-		}
+    case types.SET_MAP_CENTER: {
+      return produce(state, (draft) => {
+        draft.mapCenter = action.location;
+      });
+    }
 
 		default:
 			return state;

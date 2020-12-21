@@ -1,9 +1,17 @@
+import { useDispatch, useSelector } from 'react-redux'
+import { setShopMapSelected, setMapCenter } from '../../store/modules/shop/actions'
 import './styles.css'
 
 const PetShop = ({ petshop }) => {
 
-	const setSelectedPetshop = () =>{
-		
+	const dispatch = useDispatch();
+	const { petshopMapSelected } = useSelector((state) => state.shop);
+
+	const setSelectedPetshop = () => {
+
+    dispatch(setShopMapSelected(petshop._id));
+    dispatch(setMapCenter(petshop.location));
+
 	}
 
 	return (
