@@ -1,7 +1,7 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
-import shop from '../modules/shop/reducer'
+import shop from '../modules/shop/reducer';
 
 export default combineReducers({
-	shop,
+  shop,
 });

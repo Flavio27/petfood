@@ -1,16 +1,24 @@
 import './styles.css'
 
-const PetShop = () => {
+const PetShop = ({ petshop }) => {
+
+	const setSelectedPetshop = () =>{
+		
+	}
+
 	return (
-		<li className="petshop d-inline-block">
+		<li
+			className="petshop d-inline-block"
+			onClick={() => setSelectedPetshop()}
+		>
 			<div className="d-inline-block">
-				<img alt="petlove"
-					src="https://www.petlove.com.br/static/uploads/banner_image/image/4304/logo-petlove-push.png"
+				<img alt={petshop.nome}
+					src={petshop.logo}
 					className="img-fluid"
 				/>
 			</div>
 			<div className="d-inline-block pl-3 align-bottom spaceImg">
-				<b>PetLove</b>
+				<b>{petshop.nome}</b>
 				<div className="petshop-infos">
 					<span className="mdi mdi-star"></span>
 					<text>

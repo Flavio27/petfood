@@ -1,11 +1,13 @@
-import { takeLatest, all, call } from 'redux-saga/effects'
+import { takeLatest, all, call, put } from 'redux-saga/effects'
 import types from './types'
 import api from '../../../services/api'
-import {setPetShops} from './actions'
+import { setPetShops } from './actions'
+
 
 export function* requestPetShops() {
-	const response = yield call(api.get, '/pethops');
+	const response = yield call(api.get, '/petshops');
 	const res = response.data;
+	yield put(setPetShops(res.petshops));
 
 }
 
