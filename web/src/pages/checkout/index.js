@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import './styles.css';
 import Header from '../../components/header';
@@ -7,9 +7,14 @@ import Product from '../../components/product/list';
 
 
 
+
 function Checkout() {
 
   const { cart } = useSelector((state) => state.shop);
+
+  const total = cart.reduce((total, product) => {
+		return total + product.preco;
+	}, 0)
 
   const [transaction, setTransaction] = useState({
     amount: 0,
@@ -36,20 +41,39 @@ function Checkout() {
     split_rules: [],
   });
 
-    
-  const setShippingValue = (key, value) =>{
+
+  const setShippingValue = (key, value) => {
     setTransaction({
       ...transaction,
       shipping: {
         ...transaction.shipping,
-        addres: {
+        address: {
           ...transaction.shipping.address,
           [key]: value,
         },
       },
-    })
+    });
+  };
 
+  const makePurchase = () => {
+    console.log(transaction)
   }
+
+  useEffect(() => {
+
+    setTransaction({
+      ...transaction,
+      amount: total.toFixed(2).toString().replace('.', ''),
+      items: cart.map((produto) => ({
+        id: produto._id,
+        title: produto.nome,
+        unit_price: produto.preco.toFixed(2).replace('.', ''),
+        quantity: 1,
+        tangible: true,
+      })),
+
+    })
+  }, [total])
 
   return (
     <div className="h-100">
@@ -94,7 +118,7 @@ function Checkout() {
                   type="number"
                   placeholder="Numero"
                   className="form-control form-control-lg"
-                  onChange={(e) => setShippingValue('streetnumber', e.target.value)}
+                  onChange={(e) => setShippingValue('street_number', e.target.value)}
                 />
               </div>
               <div className="col-5 pl-0">
@@ -122,7 +146,7 @@ function Checkout() {
                   type="text"
                   placeholder="Número do Cartão"
                   className="form-control form-control-lg"
-                  onChange={(e) => setTransaction({... transaction, card_number: e.target.value})}
+                  onChange={(e) => setTransaction({ ...transaction, card_number: e.target.value })}
                 />
               </div>
               <div className="col-6">
@@ -130,6 +154,7 @@ function Checkout() {
                   type="text"
                   placeholder="Nome do titular"
                   className="form-control form-control-lg"
+                  onChange={(e) => setTransaction({ ...transaction, card_holder_name: e.target.value })}
                 />
               </div>
             </div>
@@ -139,7 +164,7 @@ function Checkout() {
                   type="date"
                   placeholder="Validade"
                   className="form-control form-control-lg"
-                  onChange={(e) => setTransaction({... transaction, card_expiration_date: e.target.value})}
+                  onChange={(e) => setTransaction({ ...transaction, card_expiration_date: e.target.value })}
                 />
               </div>
               <div className="col-6 pl-0">
@@ -147,7 +172,7 @@ function Checkout() {
                   type="text"
                   placeholder="CVV"
                   className="form-control form-control-lg"
-                  onChange={(e) => setTransaction({... transaction, card_cvv: e.target.value})}
+                  onChange={(e) => setTransaction({ ...transaction, card_cvv: e.target.value })}
                 />
               </div>
 
@@ -164,12 +189,17 @@ function Checkout() {
 
             </div> */}
             <div className="row mt-4">
-              <div className="col-12 mb-4 d-flex justify-content-between align-items-center">
+              <div className="col-12 mb-4 d-flex justify-content-between align-items-center total">
                 <b>Total:</b>
-                <h3>R$ 30,00</h3>
+                <h3>R$ {total.toFixed(2)}</h3>
               </div>
               <div className="col-12">
-                <button type="button" className="btn btn-block btn-lg btn-primary w-100">Finalizar Compra</button>
+                <button
+                  type="button"
+                  onClick={() => makePurchase()}
+                  className="btn btn-block btn-lg btn-primary w-100">
+                  Finalizar Compra
+                  </button>
               </div>
             </div>
           </div>

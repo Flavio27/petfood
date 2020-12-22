@@ -10,3 +10,7 @@
     max-height: 500px;
     overflow-y: auto;
 }
+
+.total{
+    background-color: #f6f5f5f5;
+}
