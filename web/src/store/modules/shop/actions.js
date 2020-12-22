@@ -36,3 +36,7 @@ export function setTransaction(transaction) {
 	return { type: types.SET_TRANSACTION, transaction };
 }
 
+export function makePruchase() {
+	return { type: types.MAKE_PURCHASE };
+}
+
