@@ -11,7 +11,36 @@ const INITIAL_STATE = {
 		lng: -46.625378,
   },
   cart: [],
-}
+  transactionFee: 0.1,
+  defaultRecipient: {
+    recipient_id: '',
+    percentage: 10,
+    liable: true,
+  },
+  transaction: {
+    amount: 0,
+    card_number: '',
+    card_cvv: '',
+    card_expiration_date: '',
+    card_holder_name: '',
+    customer: {},
+    billing: {
+      name: 'Petfood LTDA',
+      address: {
+        country: 'br',
+        state: 'sp',
+        city: 'Aparecida',
+        neighborhood: 'Centro',
+        street: 'Rua central',
+        street_number: '9999',
+        zipcode: '06714360',
+      },
+    },
+    shipping: {},
+    items: [],
+    split_rules: [],
+  },
+};
 
 function shop(state = INITIAL_STATE, action) {
 	switch (action.type) {
@@ -48,11 +77,17 @@ function shop(state = INITIAL_STATE, action) {
     case types.TOGGLE_CART_PRODUCT: {
       return produce(state, (draft) => {
         const index = draft.cart.findIndex((p) => p._id === action.produto._id);
-        if (index ==! -1){
+        if (index !== -1){
           draft.cart.splice(index, 1)
         }else{
           draft.cart.push(action.produto)
         }
+      });
+    }
+
+    case types.SET_TRANSACTION: {
+      return produce(state, (draft) => {
+        draft.transaction = { ...draft.transaction, ...action.transaction };
       });
     }
 

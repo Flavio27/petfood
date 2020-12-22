@@ -1,7 +1,7 @@
 import types from './types'
 
 export function setCustomer(customer) {
-	return { type: types.SET_CUSTOMER, customer }
+	return { type: types.SET_CUSTOMER, customer };
 }
 
 export function requestPetShops() {
@@ -31,3 +31,8 @@ export function setPetshop(petshop) {
 export function toggleCartProduct(produto) {
 	return { type: types.TOGGLE_CART_PRODUCT, produto }
 }
+
+export function setTransaction(transaction) {
+	return { type: types.SET_TRANSACTION, transaction };
+}
+

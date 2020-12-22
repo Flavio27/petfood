@@ -1,6 +1,8 @@
 import dayjs from 'dayjs'
+import _ from 'underscore'
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setTransaction as setStoreTransaction} from '../../store/modules/shop/actions'
 import './styles.css';
 import Header from '../../components/header';
 import Product from '../../components/product/list';
@@ -10,7 +12,9 @@ import Product from '../../components/product/list';
 
 function Checkout() {
 
-  const { cart } = useSelector((state) => state.shop);
+  const dispatch = useDispatch();
+
+  const { cart, transactionFee, defaultRecipient } = useSelector((state) => state.shop);
 
   const total = cart.reduce((total, product) => {
 		return total + product.preco;
@@ -56,8 +60,48 @@ function Checkout() {
   };
 
   const makePurchase = () => {
-    console.log(transaction)
+    dispatch(setStoreTransaction(transaction)); 
   }
+
+  const getSplitRules = () => {
+    const productsByPetshop = _.groupBy(
+      cart,
+      (product) => product.petshop_id.recipient_id
+    );
+
+    let result = [];
+
+    Object.keys(productsByPetshop).map((petshop) => {
+      const products = productsByPetshop[petshop];
+      const totalValuePerPetshop = products
+        .reduce((total, product) => {
+          return total + product.preco;
+        }, 0)
+        .toFixed(2);
+
+      const totalFee = (totalValuePerPetshop * transactionFee).toFixed(2);
+
+      result.push({
+        recipient_id: products[0].petshop_id.recipient_id,
+        percentage: Math.floor(
+          ((totalValuePerPetshop - totalFee) / total) * 100
+        ),
+        liable: true,
+        charge_processing_fee: true,
+      });
+    });
+
+    const totalPetshopsPercentage = result.reduce((total, recipient) => {
+      return total + parseFloat(recipient.percentage);
+    }, 0);
+
+    result.push({
+      ...defaultRecipient,
+      percentage: 100 - totalPetshopsPercentage,
+    });
+
+    return result;
+  };
 
   useEffect(() => {
 
@@ -71,6 +115,7 @@ function Checkout() {
         quantity: 1,
         tangible: true,
       })),
+      split_rules: getSplitRules(),
 
     })
   }, [total])

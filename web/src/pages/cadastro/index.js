@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import illustration from '../../assets/illustration.png';
 import Header from '../../components/header';
-import {setCustomer as setStoreCustomer} from '../../store/modules/shop/actions'
+import { setCustomer as setStoreCustmer } from '../../store/modules/shop/actions';
+import { Link } from 'react-router-dom'
 
 export default function Cadastro() {
 
@@ -12,7 +13,7 @@ export default function Cadastro() {
     external_id: new Date().getTime().toString(),
     name: '',
     type: 'individual',
-    country: '',
+    country: 'br',
     email: '',
     documents: [
       {
@@ -20,13 +21,13 @@ export default function Cadastro() {
         number: '',
       },
     ],
-    phone_Numbers: [''],
+    phone_numbers: [''],
     birthday: '',
   });
 
   const goToCheckout = () => {
-    dispatch(setStoreCustomer(customer))
-  }
+    dispatch(setStoreCustmer(customer));
+  };
 
   return (
     <div className="container-fluid h-100 bg-primary">
@@ -81,7 +82,13 @@ export default function Cadastro() {
               onChange={e => setCustomer({ ...customer, birthday: e.target.value })}
             />
 
-            <button onClick={goToCheckout} type="button" className="btn btn-lg btn-block btn-secondary">Finalizar Pedido</button>
+            <Link
+              to="/checkout"
+              onClick={() => goToCheckout()}
+              type="button"
+              className="btn btn-lg btn-block btn-secondary">
+              Finalizar Pedido
+              </Link>
 
           </div>
 

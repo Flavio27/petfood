@@ -7,6 +7,7 @@ const types = {
   REQUEST_PETSHOP: '@shop/REQUEST_PETSHOP',
   SET_PETSHOP: '@shop/SET_PETSHOP',
   TOGGLE_CART_PRODUCT: '@shop/TOGGLE_CART_PRODUCT',
+  SET_TRANSACTION: '@shop/SET_TRANSACTION',
 }
 
 export default types

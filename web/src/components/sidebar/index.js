@@ -41,7 +41,7 @@ const SideBar = () => {
 						<h3 className="d-inline-block">R$ {total.toFixed(2)}</h3>
 					</div>
 					<button
-						onClick={() => history.push('/checkout')}
+						onClick={() => history.push('/cadastro')}
 						className="btn btn-block btn-lg btn-primary rounded-0 h-50 w-100 align-items-center ">
 						Finalizar Compra
 					</button>
