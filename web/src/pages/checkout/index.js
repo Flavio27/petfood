@@ -2,11 +2,16 @@ import React from 'react';
 import './styles.css';
 import Header from '../../components/header';
 import Product from '../../components/product/list';
+import { useSelector } from 'react-redux';
+
 
 function Checkout() {
+
+  const { cart } = useSelector((state) => state.shop);
+
   return (
     <div className="h-100">
-      <Header hideCart/>
+      <Header hideCart />
       <div className="container mt-4">
         <div className="row">
           <div className="col-6">
@@ -121,11 +126,11 @@ function Checkout() {
           <div className="col-6">
             <div className="box col mb-4 box-sidebar"
             >
-              <h4>Minha Sacola (5) </h4>
+              <h4>Minha Sacola ({cart.length}) </h4>
 
               <div className="row products">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(p => (
-                  <Product />
+                {cart.map(p => (
+                  <Product produto={p} />
                 ))}
 
               </div>

@@ -1,15 +1,19 @@
 
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom'
 import Dock from 'react-dock'
 import Product from '../product/list'
 import './styles.css'
 
 const SideBar = () => {
+
+	const history = useHistory();
+
 	const { cart } = useSelector((state) => state.shop)
-	const total = cart.reduce((total, product) =>{
+	const total = cart.reduce((total, product) => {
 		return total + product.preco;
-	},0)
+	}, 0)
 	const [opened, setOpened] = useState(false);
 
 	useEffect(() => {
@@ -28,7 +32,7 @@ const SideBar = () => {
 				<h5>Minha Sacola ({cart.length})</h5>
 				<div className="row products">
 					{cart.map(p => (
-						<Product produto={p}/>
+						<Product produto={p} />
 					))}
 				</div>
 				<div className="row align-items-end footer">
@@ -36,7 +40,9 @@ const SideBar = () => {
 						<b className="d-inline-block">Total</b>
 						<h3 className="d-inline-block">R$ {total.toFixed(2)}</h3>
 					</div>
-					<button className="btn btn-block btn-lg btn-primary rounded-0 h-50 w-100 align-items-center ">
+					<button
+						onClick={() => history.push('/checkout')}
+						className="btn btn-block btn-lg btn-primary rounded-0 h-50 w-100 align-items-center ">
 						Finalizar Compra
 					</button>
 				</div>
