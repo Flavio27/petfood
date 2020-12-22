@@ -47,6 +47,16 @@ input[type='number']:disabled{
     border-color: #fff!important;
 }
 
+.btn.btn-primary.rounded-circle{
+    border-color: #fff!important;
+    background-color: rgb(var(--primary))!important;
+}
+
+.btn.btn-secondary.rounded-circle{
+    border-color: #fff!important;
+    background-color: rgb(var(--secondary))!important;
+}
+
 .bg-primary{
     background-color: rgb(var(--primary))!important;
 }

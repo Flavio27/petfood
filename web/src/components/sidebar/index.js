@@ -1,10 +1,12 @@
 
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import Dock from 'react-dock'
 import Product from '../product/list'
 import './styles.css'
 
 const SideBar = () => {
+	const { cart } = useSelector((state) => state.shop)
 	const [opened, setOpened] = useState(false);
 
 	useEffect(() => {
@@ -20,10 +22,10 @@ const SideBar = () => {
 			onVisibleChange={(visible) => setOpened(visible)}
 		>
 			<div className="container-fluid h-100 pt-4 sidebar">
-				<h5>Minha Sacola (5)</h5>
+				<h5>Minha Sacola ({cart.length})</h5>
 				<div className="row products">
-					{[1, 2, 3, 4, 5, 6, 7, 8, 9].map(p => (
-						<Product />
+					{cart.map(p => (
+						<Product produto={p}/>
 					))}
 				</div>
 				<div className="row align-items-end footer">

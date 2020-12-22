@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { toggleCartProduct } from '../../../store/modules/shop/actions'
-import React from 'react'
-import './styles.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleCartProduct } from '../../../store/modules/shop/actions';
+import React from 'react';
+import './styles.css';
 
 const Product = ({ produto }) => {
 
