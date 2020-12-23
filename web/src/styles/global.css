@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+:root {
+    --primary: 6,214,160;
+    --secondary: 250,100,61;
+}
+html,
+body {
+    height:100%;
+    overflow: hidden;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 0.03em;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='date'],
+input[type='number']{
+    font-size: 15px;
+}
+ 
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='date'],
+input[type='number'],
+input[type='text']:disabled
+input[type='email']:disabled
+input[type='password']:disabled
+input[type='date']:disabled
+input[type='number']:disabled{
+    background-color: #f6f5f5;
+    border: 0.5px solid #dcdcdc;
+    outline: none;
+    color: #626264;
+}
+
+.btn {
+    font-size: 15px;
+}
+
+.btn-primary{
+    border-color: #fff!important;
+}
+.btn-secondary{
+    border-color: #fff!important;
+}
+
+.btn.btn-primary.rounded-circle{
+    border-color: #fff!important;
+    background-color: rgb(var(--primary))!important;
+}
+
+.btn.btn-secondary.rounded-circle{
+    border-color: #fff!important;
+    background-color: rgb(var(--secondary))!important;
+}
+
+.bg-primary{
+    background-color: rgb(var(--primary))!important;
+}
+
+.bg-secondary{
+    background-color: rgb(var(--secondary))!important;
+}
+
+
+
+.btn-primary,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:disabled,
+.btn-primary:hover{
+    background-color: rgb(var(--primary))!important;
+    border-color: rgb(var(--secondary));
+}
+.btn-secondary,
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary:disabled,
+.btn-secondary:hover{
+    background-color: rgb(var(--primary))!important;
+    border-color: rgb(var(--secondary));
+}
+
+.badge{
+    font-weight: lighter;
+}
+
+.badge.badge-primary{
+    background: rgba(var(--primary), 0.1);
+    color: rgb(var(--primary));
+}
+
+.badge.badge-secondary{
+    background: rgba(var(--secondary), 0.1);
+    color: rgb(var(--secondary));
+}
+
+.box{
+    background-color: #fff;
+    box-shadow: 0px 0px 11px 6px rgba(0, 0, 0, 0.08);
+    border-radius: 5px;
+    display: inline-block;
+    padding: 50px;
+}

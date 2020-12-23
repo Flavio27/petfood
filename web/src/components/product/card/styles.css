@@ -1,0 +1,43 @@
+.product{
+	margin-bottom: 50px;
+
+}
+
+.product img{
+	border: 1px solid #dcdcdc;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	padding: 20px;
+	max-height: 210px;
+	width: 100%;
+}
+
+.product .badge{
+	margin-bottom: 0;
+
+}
+
+.product small{
+	margin-top: 0;
+	line-height: 15px;
+	display: block;
+}
+
+.button-div{
+	justify-content: right;
+	align-items: right;
+	text-align: right;
+}
+.product button{
+	display: inline;
+	min-width: 20px;;
+}
+
+.product button.btn-secondary {
+	padding: 1px 14px;
+
+}
+
+.mdi.mdi-star{
+color: orange;
+}
