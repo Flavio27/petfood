@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 import _ from 'underscore'
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setTransaction as setStoreTransaction} from '../../store/modules/shop/actions'
+import { setTransaction as setStoreTransaction, makePruchase } from '../../store/modules/shop/actions'
 import './styles.css';
 import Header from '../../components/header';
 import Product from '../../components/product/list';
@@ -17,8 +17,8 @@ function Checkout() {
   const { cart, transactionFee, defaultRecipient } = useSelector((state) => state.shop);
 
   const total = cart.reduce((total, product) => {
-		return total + product.preco;
-	}, 0)
+    return total + product.preco;
+  }, 0)
 
   const [transaction, setTransaction] = useState({
     amount: 0,
@@ -60,7 +60,10 @@ function Checkout() {
   };
 
   const makePurchase = () => {
-    dispatch(setStoreTransaction(transaction)); 
+    dispatch(setStoreTransaction(transaction));
+    setTimeout(() => {
+      dispatch(makePruchase())
+    }, 100)
   }
 
   const getSplitRules = () => {
@@ -206,7 +209,7 @@ function Checkout() {
             <div className="row mb-3">
               <div className="col-6">
                 <input
-                  type="date"
+                  type="text"
                   placeholder="Validade"
                   className="form-control form-control-lg"
                   onChange={(e) => setTransaction({ ...transaction, card_expiration_date: e.target.value })}

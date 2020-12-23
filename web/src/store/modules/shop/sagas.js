@@ -23,7 +23,9 @@ export function* makePurchase() {
   const response = yield call(api.post, `/purchase`, transaction);
   const res = response.data;
 
-  if (res.error = true) {
+  console.log(res.data)
+
+  if (res.error) {
     Swal.fire({
       icon: 'error',
       title: 'Oopss...',

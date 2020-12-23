@@ -58,21 +58,16 @@ export default function Cadastro() {
             <input
               type="text"
               className="form-control form-control-lg mb-3"
-              placeholder="Telefone"
-              onChange={e => setCustomer({
-                ...customer, documents: [
-                  {
-                    type: 'cpf',
-                    number: e.target.value,
-                  },]
+              placeholder="CPF"
+              onChange={e => setCustomer({...customer, documents: [{ type: 'cpf', number: e.target.value,}]
               })}
             />
 
             <input
               type="text"
               className="form-control form-control-lg mb-3"
-              placeholder="CPF"
-              onChange={e => setCustomer({ ...customer, phone_Numbers: [e.target.value] })}
+              placeholder="Telefone"
+              onChange={e => setCustomer({ ...customer, phone_numbers: [e.target.value] })}
             />
 
             <input
